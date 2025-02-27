@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://rnn2xbvk8hl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_twonf"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_258u2"]
+albedo_color = Color(0.185861, 0.457762, 0.328094, 1)
+
+[node name="Tile" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_twonf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="RigidBody3D/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
+material = SubResource("StandardMaterial3D_258u2")
