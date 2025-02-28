@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://rnn2xbvk8hl"]
+[gd_scene load_steps=4 format=3 uid="uid://rnn2xbvk8hl"]
+
+[ext_resource type="Script" path="res://prefabs/tile.gd" id="1_8h6e6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_twonf"]
 size = Vector3(1, 0.5, 1)
@@ -7,8 +9,15 @@ size = Vector3(1, 0.5, 1)
 albedo_color = Color(0.185861, 0.457762, 0.328094, 1)
 
 [node name="Tile" type="Node3D"]
+script = ExtResource("1_8h6e6")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Tile"]]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("BoxShape3D_twonf")
