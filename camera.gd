@@ -16,10 +16,7 @@ func _process(delta: float) -> void:
 	ray_cast_3d.force_raycast_update()
 	if(ray_cast_3d.is_colliding()):
 		var collider : RigidBody3D = ray_cast_3d.get_collider()
-		print("colliding " + collider.to_string())
 		if (collider.is_in_group("Tile")):
 			#highlight as moveable
-			print("tile found")
 			if(Input.is_action_pressed("click_L")):
-				print("clicked **************************************")
 				character.assignTile(collider.get_parent())

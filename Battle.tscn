@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1o25l73snmh1"]
+[gd_scene load_steps=8 format=3 uid="uid://d1o25l73snmh1"]
 
-[ext_resource type="Script" path="res://camera.gd" id="1_0eqgn"]
+[ext_resource type="Script" uid="uid://bpfe37qtkmfjn" path="res://camera.gd" id="1_0eqgn"]
 [ext_resource type="PackedScene" uid="uid://rnn2xbvk8hl" path="res://prefabs/Tile.tscn" id="1_7ujl4"]
 [ext_resource type="PackedScene" uid="uid://c1kqabykgedwd" path="res://Character.tscn" id="3_hdck2"]
+[ext_resource type="PackedScene" uid="uid://tpuxrhhqm6d5" path="res://shader_mesh.tscn" id="4_1046u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2qblu"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -81,3 +82,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, -0.5)
 
 [node name="Character" parent="." instance=ExtResource("3_hdck2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="ShaderMesh" parent="." instance=ExtResource("4_1046u")]
