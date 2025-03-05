@@ -4,6 +4,8 @@ extends Camera3D
 
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 
+var hovered_tile: Tile
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -17,6 +19,12 @@ func _process(delta: float) -> void:
 	if(ray_cast_3d.is_colliding()):
 		var collider : RigidBody3D = ray_cast_3d.get_collider()
 		if (collider.is_in_group("Tile")):
-			#highlight as moveable
-			if(Input.is_action_pressed("click_L")):
-				character.assignTile(collider.get_parent())
+			var new_hovered_tile = collider.get_parent()
+			if(!hovered_tile):
+				hovered_tile = new_hovered_tile
+			if(new_hovered_tile != hovered_tile):
+				hovered_tile.isHovered(false)
+				hovered_tile = new_hovered_tile
+			hovered_tile.isHovered(true)
+			if(Input.is_action_just_pressed("click_L")):
+				character.assignTile(hovered_tile)

@@ -1,8 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://rnn2xbvk8hl"]
+[gd_scene load_steps=6 format=3 uid="uid://rnn2xbvk8hl"]
 
 [ext_resource type="Script" uid="uid://cww3iqlfxt2sa" path="res://prefabs/tile.gd" id="1_8h6e6"]
-[ext_resource type="Shader" uid="uid://deoe2kc31d12" path="res://prefabs/pixel_perfect_outline.gdshader" id="2_4u2g1"]
-[ext_resource type="Shader" uid="uid://c4mij53kixwf3" path="res://prefabs/EdgeDetectionOutline.gdshader" id="3_x7qbv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_twonf"]
 size = Vector3(1, 0.5, 1)
@@ -10,15 +8,13 @@ size = Vector3(1, 0.5, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_258u2"]
 albedo_color = Color(0.185861, 0.457762, 0.328094, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4u2g1"]
-render_priority = 0
-shader = ExtResource("2_4u2g1")
-shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/outline_width = 1.0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7eqyh"]
+shading_mode = 0
+albedo_color = Color(0.196078, 0.745098, 0.184314, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ubf0g"]
-render_priority = 0
-shader = ExtResource("3_x7qbv")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4u2g1"]
+shading_mode = 0
+albedo_color = Color(0.439832, 0.208228, 0.67624, 1)
 
 [node name="Tile" type="Node3D"]
 script = ExtResource("1_8h6e6")
@@ -38,12 +34,13 @@ shape = SubResource("BoxShape3D_twonf")
 transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
 material = SubResource("StandardMaterial3D_258u2")
 
-[node name="OutlineBox" type="CSGBox3D" parent="RigidBody3D/CollisionShape3D"]
+[node name="MovableHighlightBox" type="CSGBox3D" parent="RigidBody3D/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
 visible = false
-material_overlay = SubResource("ShaderMaterial_4u2g1")
+material_override = SubResource("StandardMaterial3D_7eqyh")
+transparency = 0.5
 
-[node name="OutlineBox2" type="CSGBox3D" parent="RigidBody3D/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
+[node name="HoverHighlightBox" type="CSGBox3D" parent="RigidBody3D/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 0.01, 0, 0, 0, 1, 0, 0.251, 0)
 visible = false
-material_overlay = SubResource("ShaderMaterial_ubf0g")
+material = SubResource("StandardMaterial3D_4u2g1")

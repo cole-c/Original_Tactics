@@ -1,9 +1,11 @@
 extends Node3D
 class_name Character
 
-@export var moveSpeed := 0.4
+@export var moveSpeed := 0.6
+@export var movement := 2
+@export var currentTile: Tile
 
-var currentTile: Tile
+
 var moveTimer = 0.0
 var currentPosition: Vector3
 var destination: Vector3
@@ -22,6 +24,6 @@ func _physics_process(delta: float) -> void:
 
 func assignTile(tile: Tile) -> void: 
 	currentTile = tile
-	destination = tile.global_position + tileHeight
+	destination = tile.get_move_position()
 	currentPosition = global_position
 	moveTimer = 0.0
