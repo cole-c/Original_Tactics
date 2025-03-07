@@ -12,7 +12,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var mouse_position: Vector2 = get_viewport().get_mouse_position()
 	ray_cast_3d.target_position = project_local_ray_normal(mouse_position) * 100.0
 	ray_cast_3d.force_raycast_update()
@@ -23,8 +23,8 @@ func _process(delta: float) -> void:
 			if(!hovered_tile):
 				hovered_tile = new_hovered_tile
 			if(new_hovered_tile != hovered_tile):
-				hovered_tile.isHovered(false)
+				hovered_tile.is_hovered(false)
 				hovered_tile = new_hovered_tile
-			hovered_tile.isHovered(true)
+			hovered_tile.is_hovered(true)
 			if(Input.is_action_just_pressed("click_L")):
 				character.assignTile(hovered_tile)

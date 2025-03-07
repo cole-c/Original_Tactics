@@ -35,7 +35,7 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
 material = SubResource("StandardMaterial3D_258u2")
 
 [node name="MovableHighlightBox" type="CSGBox3D" parent="RigidBody3D/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.01, 0, 0, 0, 1, 0, 0.251, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_7eqyh")
 transparency = 0.5
@@ -44,3 +44,5 @@ transparency = 0.5
 transform = Transform3D(1, 0, 0, 0, 0.01, 0, 0, 0, 1, 0, 0.251, 0)
 visible = false
 material = SubResource("StandardMaterial3D_4u2g1")
+
+[node name="RayCast" type="RayCast3D" parent="."]

@@ -27,3 +27,7 @@ func assignTile(tile: Tile) -> void:
 	destination = tile.get_move_position()
 	currentPosition = global_position
 	moveTimer = 0.0
+	highlight_movable_tiles()
+
+func highlight_movable_tiles() -> void: 
+	currentTile.get_neighboring_tiles()
