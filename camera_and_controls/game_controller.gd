@@ -2,12 +2,6 @@ extends Node
 
 var tiles = {}
 
-#TODO: 
-	#working on mapping tiles into an easily referencable structure here
-	#Next steps: use this struct + character's movement to highlight moveable tiles
-	#move only to a moveable tile on click
-	#Move between tiles one at a time with a pathfinding algorithm
-
 func map_tiles() -> void:
 	var tiles_in_scene := get_tree().get_nodes_in_group("Tile")
 	for tile in tiles_in_scene:

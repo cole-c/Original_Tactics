@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://tpuxrhhqm6d5"]
 
-[ext_resource type="Shader" uid="uid://btx7tlesd0tor" path="res://prefabs/PostProcOutline.gdshader" id="1_qc2cj"]
+[ext_resource type="Shader" uid="uid://btx7tlesd0tor" path="res://shaders/PostProcOutline.gdshader" id="1_qc2cj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1snx8"]
 render_priority = 0

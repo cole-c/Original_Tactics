@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://rnn2xbvk8hl"]
 
-[ext_resource type="Script" uid="uid://cww3iqlfxt2sa" path="res://prefabs/tile.gd" id="1_8h6e6"]
+[ext_resource type="Script" uid="uid://cww3iqlfxt2sa" path="res://map_components/tile/tile.gd" id="1_8h6e6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_twonf"]
 size = Vector3(1, 0.5, 1)

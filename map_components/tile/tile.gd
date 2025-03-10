@@ -18,21 +18,12 @@ const verticalNeighbor = Vector3(0.0, 0.0, 1.0)
 
 var test_highlights = false
 
-func get_adjacent_tiles() -> void:
-	# TODO
-	# Either use raycasts to detect here or 
-	# In controller, create a map where key is (tile level, x, y) and add all tiles to that at the start
-	# by getting them by group and checking their X,Y. Level can be calculated if there are multiple that
-	# share X,Y, then sort by Z and assign levels
-	# add can_move_up, can_move_down here for between levels or just "linked tiles" for teleporters, etc
-	pass
-
 func get_neighboring_tiles() -> Array: 
 	var neighbors = []
 	neighbors.append_array(get_individual_neighbors(horizontalNeighbor))
-	#neighbors.append_array(get_individual_neighbors(-horizontalNeighbor))
-	#neighbors.append_array(get_individual_neighbors(verticalNeighbor))
-	#neighbors.append_array(get_individual_neighbors(-verticalNeighbor))
+	neighbors.append_array(get_individual_neighbors(-horizontalNeighbor))
+	neighbors.append_array(get_individual_neighbors(verticalNeighbor))
+	neighbors.append_array(get_individual_neighbors(-verticalNeighbor))
 	return neighbors
 
 func get_individual_neighbors(offset: Vector3) -> Array:
