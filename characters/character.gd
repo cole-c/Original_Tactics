@@ -38,7 +38,7 @@ func assignTile(tile: Tile) -> void:
 	highlight_movable_tiles()
 
 func highlight_movable_tiles() -> void: 
-	movableTiles = currentTile.get_neighboring_tiles()
+	movableTiles = populate_movable_tiles(movement)
 	for _tile in movableTiles:
 		_tile.is_movable(true)
 
@@ -46,9 +46,20 @@ func clear_movable_tiles() -> void:
 	for _tile in movableTiles:
 		_tile.is_movable(false)
 
-func populate_movable_tiles(movement: int) -> void:
-	var move_tiles_temp
-	pass
+func populate_movable_tiles(movement: int) -> Array:
+	var visited_tiles = { get_tile_key(currentTile): currentTile }
+	var visited_queue = [currentTile]
+	var head = 0
+	var movement_left = movement
+	while(movement_left > 0):
+		for i in range(head, visited_queue.size()):
+			var neighbors = visited_queue[i].get_neighboring_tiles()
+			for n_tile in neighbors:
+				if !visited_tiles.has(get_tile_key(n_tile)):
+					visited_tiles[get_tile_key(n_tile)] = n_tile
+					visited_queue.append(n_tile)
+		movement_left -= 1;
+	return visited_queue
 
 func get_tile_key(tile: Tile) -> String:
-	return "test"
+	return str(tile.position.x) + "," + str(tile.position.y) + "," + str(tile.position.z)

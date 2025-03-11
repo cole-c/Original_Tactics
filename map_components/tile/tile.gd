@@ -37,13 +37,9 @@ func get_individual_neighbors(offset: Vector3) -> Array:
 	ray_cast.target_position = Vector3(0.0, -110.0, 0.0)
 	ray_cast.force_raycast_update()
 	
-	print("Pos: x:" + str(ray_cast.position.x) + "  y:" + str(ray_cast.position.y) + "  z:" + str(ray_cast.position.z))
-	print("Tar: x:" + str(ray_cast.target_position.x) + "  y:" + str(ray_cast.target_position.y) + "  z:" + str(ray_cast.target_position.z))
-
 	var collision = ray_cast.get_collider()
 	while(collision != null):
 		if (collision.is_in_group("Tile")):
-			print("Found a tile!")
 			#TODO: multi-level tile handling
 			neighbors.append(collision.get_parent())
 		ray_cast.add_exception(collision)
