@@ -28,3 +28,7 @@ func _physics_process(delta: float) -> void:
 			hovered_tile.is_hovered(true)
 			if(Input.is_action_just_pressed("click_L")):
 				character.assignTile(hovered_tile)
+	else: 
+		if(hovered_tile):
+			hovered_tile.is_hovered(false)
+		hovered_tile = null

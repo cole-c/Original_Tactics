@@ -9,6 +9,7 @@ class_name Tile
 @onready var hover_highlight: CSGBox3D = $RigidBody3D/CollisionShape3D/HoverHighlightBox
 @onready var ray_cast: RayCast3D = $RayCast
 
+var a_star_id = null 
 
 #All tiles are currently 0.5 tall, so the top is 0.25 above center
 const tileHeight = Vector3(0.0, 0.25, 0.0)
@@ -52,6 +53,8 @@ func get_move_position() -> Vector3:
 
 func is_movable(movable: bool) -> void:
 	movable_highlight.visible = movable
+	if !movable:
+		a_star_id = null
 
 func is_hovered(hover: bool) -> void:
 	hover_highlight.visible = hover
