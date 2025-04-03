@@ -56,6 +56,9 @@ func is_movable(movable: bool) -> void:
 	if !movable:
 		a_star_id = null
 
+func get_movable() -> bool:
+	return movable_highlight.visible
+
 func is_hovered(hover: bool) -> void:
 	hover_highlight.visible = hover
 
