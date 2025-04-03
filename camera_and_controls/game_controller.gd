@@ -1,5 +1,7 @@
 extends Node
 
+class_name GameController
+
 var tiles = {}
 
 func map_tiles() -> void:

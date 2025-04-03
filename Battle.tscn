@@ -138,5 +138,5 @@ movement = 4
 
 [node name="ShaderMesh" parent="." instance=ExtResource("4_1046u")]
 
-[node name="Controller" type="Node" parent="."]
+[node name="Game_Controller" type="Node" parent="."]
 script = ExtResource("5_pjn1s")
