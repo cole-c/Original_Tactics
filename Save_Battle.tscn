@@ -1,0 +1,117 @@
+[gd_scene load_steps=9 format=3 uid="uid://4tyvhgkj457f"]
+
+[ext_resource type="Script" uid="uid://bpfe37qtkmfjn" path="res://camera_and_controls/camera.gd" id="1_lywno"]
+[ext_resource type="PackedScene" uid="uid://rnn2xbvk8hl" path="res://map_components/tile/Tile.tscn" id="2_qkurd"]
+[ext_resource type="PackedScene" uid="uid://c1kqabykgedwd" path="res://characters/Character.tscn" id="3_nkihm"]
+[ext_resource type="PackedScene" uid="uid://tpuxrhhqm6d5" path="res://shaders/shader_mesh.tscn" id="4_req7p"]
+[ext_resource type="PackedScene" uid="uid://14xw2kuq1pob" path="res://Game_Controller/game_controller.tscn" id="5_lywno"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2qblu"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_1g5r2"]
+sky_material = SubResource("ProceduralSkyMaterial_2qblu")
+
+[sub_resource type="Environment" id="Environment_3ychn"]
+background_mode = 2
+sky = SubResource("Sky_1g5r2")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3ychn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("character")]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 4)
+script = ExtResource("1_lywno")
+character = NodePath("../Character")
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+
+[node name="Map" type="Node" parent="."]
+
+[node name="Tiles" type="Node" parent="Map"]
+
+[node name="Tile" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+
+[node name="Tile2" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5)
+
+[node name="Tile3" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5)
+
+[node name="Tile4" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
+
+[node name="Tile5" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0.5)
+
+[node name="Tile6" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -0.5)
+
+[node name="Tile7" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -1.5)
+
+[node name="Tile8" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 1.5)
+
+[node name="Tile9" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1.5)
+
+[node name="Tile10" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -1.5)
+
+[node name="Tile11" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0.5)
+
+[node name="Tile12" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -0.5)
+
+[node name="Tile17" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 1.5)
+
+[node name="Tile18" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 1.5)
+
+[node name="Tile19" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 1.5)
+
+[node name="Tile20" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 1.5)
+
+[node name="Tile21" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)
+
+[node name="Tile22" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -0.5)
+
+[node name="Tile23" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -1.5)
+
+[node name="Tile24" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -1.5)
+
+[node name="Tile25" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -1.5)
+
+[node name="Tile30" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -2.5)
+
+[node name="Tile31" parent="Map/Tiles" instance=ExtResource("2_qkurd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -2.5)
+
+[node name="Character" parent="." instance=ExtResource("3_nkihm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+movement = 4
+
+[node name="ShaderMesh" parent="." instance=ExtResource("4_req7p")]
+
+[node name="Game_Controller" parent="." instance=ExtResource("5_lywno")]

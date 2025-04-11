@@ -2,7 +2,16 @@ extends Node
 
 class_name GameController
 
+@export var save_handler: SaveAndLoad
+
 var tiles = {}
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(_delta: float) -> void:
+	if(Input.is_action_just_pressed("one")):
+		save_handler.save_scene()
+	if(Input.is_action_just_pressed("two")):
+		save_handler.load_scene()
 
 func map_tiles() -> void:
 	var tiles_in_scene := get_tree().get_nodes_in_group("Tile")

@@ -7,7 +7,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqwnc"]
 albedo_color = Color(0.47853, 0.184013, 0.787551, 1)
 
-[node name="Character" type="Node3D"]
+[node name="Character" type="Node3D" groups=["Character"]]
 script = ExtResource("1_0axg5")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]

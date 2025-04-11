@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b47psgjyr0jml"]
+[gd_scene load_steps=3 format=3 uid="uid://b47psgjyr0jml"]
 
 [ext_resource type="Script" uid="uid://cdev0uq8odguh" path="res://Save_and_Load/save_and_load.gd" id="1_rcme7"]
+[ext_resource type="PackedScene" uid="uid://rnn2xbvk8hl" path="res://map_components/tile/Tile.tscn" id="2_o7ob1"]
 
 [node name="SaveAndLoad" type="Node"]
 script = ExtResource("1_rcme7")
+tile_scene = ExtResource("2_o7ob1")

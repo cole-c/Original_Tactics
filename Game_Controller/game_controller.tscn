@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://14xw2kuq1pob"]
+
+[ext_resource type="Script" uid="uid://cdljwdwsc0t7r" path="res://camera_and_controls/game_controller.gd" id="1_v0kb8"]
+[ext_resource type="PackedScene" uid="uid://b47psgjyr0jml" path="res://Save_and_Load/save_and_load.tscn" id="2_h8aa5"]
+
+[node name="Game_Controller" type="Node" node_paths=PackedStringArray("save_handler")]
+script = ExtResource("1_v0kb8")
+save_handler = NodePath("SaveAndLoad")
+
+[node name="SaveAndLoad" parent="." instance=ExtResource("2_h8aa5")]
