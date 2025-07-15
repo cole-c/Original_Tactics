@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1kqabykgedwd"]
+[gd_scene load_steps=5 format=3 uid="uid://c1kqabykgedwd"]
 
 [ext_resource type="Script" uid="uid://0vg3sshhof0n" path="res://characters/character.gd" id="1_0axg5"]
 
@@ -7,6 +7,8 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqwnc"]
 albedo_color = Color(0.47853, 0.184013, 0.787551, 1)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ok6ve"]
+
 [node name="Character" type="Node3D" groups=["Character"]]
 script = ExtResource("1_0axg5")
 
@@ -14,3 +16,15 @@ script = ExtResource("1_0axg5")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
 mesh = SubResource("CapsuleMesh_hc1vf")
 material = SubResource("StandardMaterial3D_yqwnc")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Character"]]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_ok6ve")

@@ -41,9 +41,10 @@ func move_along_map(_dest: int) -> void:
 		await tween.finished
 
 func highlight_movable_tiles() -> void: 
-	movableTiles = populate_movable_tiles()
-	for _tile in movableTiles:
-		_tile.is_movable(true)
+	if(currentTile):
+		movableTiles = populate_movable_tiles()
+		for _tile in movableTiles:
+			_tile.is_movable(true)
 
 func clear_movable_tiles() -> void:
 	for _tile in movableTiles:

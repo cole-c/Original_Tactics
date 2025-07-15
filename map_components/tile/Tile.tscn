@@ -16,7 +16,7 @@ albedo_color = Color(0.196078, 0.745098, 0.184314, 1)
 shading_mode = 0
 albedo_color = Color(0.439832, 0.208228, 0.67624, 1)
 
-[node name="Tile" type="Node3D"]
+[node name="Tile" type="Node3D" groups=["Tile"]]
 script = ExtResource("1_8h6e6")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Tile"]]

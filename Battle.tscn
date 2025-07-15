@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1o25l73snmh1"]
+[gd_scene load_steps=13 format=3 uid="uid://d1o25l73snmh1"]
 
 [ext_resource type="Script" uid="uid://bpfe37qtkmfjn" path="res://camera_and_controls/camera.gd" id="1_0eqgn"]
 [ext_resource type="PackedScene" uid="uid://rnn2xbvk8hl" path="res://map_components/tile/Tile.tscn" id="1_7ujl4"]
 [ext_resource type="PackedScene" uid="uid://c1kqabykgedwd" path="res://characters/Character.tscn" id="3_hdck2"]
 [ext_resource type="PackedScene" uid="uid://tpuxrhhqm6d5" path="res://shaders/shader_mesh.tscn" id="4_1046u"]
-[ext_resource type="Script" uid="uid://cdljwdwsc0t7r" path="res://camera_and_controls/game_controller.gd" id="5_pjn1s"]
+[ext_resource type="PackedScene" uid="uid://14xw2kuq1pob" path="res://Game_Controller/game_controller.tscn" id="5_pjn1s"]
+[ext_resource type="Script" uid="uid://0vg3sshhof0n" path="res://characters/character.gd" id="6_yflgj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2qblu"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -19,6 +20,13 @@ sky = SubResource("Sky_1g5r2")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hc1vf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrdw4"]
+albedo_color = Color(0.153374, 0.493485, 0.897037, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ok6ve"]
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -28,10 +36,9 @@ environment = SubResource("Environment_3ychn")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("character")]
+[node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 4)
 script = ExtResource("1_0eqgn")
-character = NodePath("../Character")
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 
@@ -132,11 +139,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -2.5)
 [node name="Tile31" parent="Map/Tiles" instance=ExtResource("1_7ujl4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -2.5)
 
-[node name="Character" parent="." instance=ExtResource("3_hdck2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-movement = 4
-
 [node name="ShaderMesh" parent="." instance=ExtResource("4_1046u")]
 
-[node name="Game_Controller" type="Node" parent="."]
-script = ExtResource("5_pjn1s")
+[node name="Game_Controller" parent="." instance=ExtResource("5_pjn1s")]
+
+[node name="Character" parent="." instance=ExtResource("3_hdck2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49048, 1.29017, 0.503081)
+
+[node name="Character2" type="Node3D" parent="." groups=["Character"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45832, 0.305661, 0.582713)
+script = ExtResource("6_yflgj")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Character2"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+mesh = SubResource("CapsuleMesh_hc1vf")
+material = SubResource("StandardMaterial3D_lrdw4")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Character2" groups=["Character"]]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Character2/RigidBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_ok6ve")
