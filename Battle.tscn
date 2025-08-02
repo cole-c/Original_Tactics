@@ -36,9 +36,10 @@ environment = SubResource("Environment_3ychn")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("game")]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 4)
 script = ExtResource("1_0eqgn")
+game = NodePath("../Game_Controller")
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 
