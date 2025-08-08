@@ -1,7 +1,7 @@
 extends Node3D
 class_name Tile
 
-@export var level := 1
+@export var level := 1 #differentiate between stories of buildings, etc
 
 @onready var mesh: CollisionShape3D = $RigidBody3D/CollisionShape3D
 @onready var rigid: RigidBody3D = $RigidBody3D

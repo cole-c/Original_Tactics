@@ -17,7 +17,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
 mesh = SubResource("CapsuleMesh_hc1vf")
 material = SubResource("StandardMaterial3D_yqwnc")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Character"]]
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true

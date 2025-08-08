@@ -4,17 +4,13 @@ class_name Character
 @export var moveSpeed := 0.6
 @export var movement := 2
 @export var currentTile: Tile
-
+@export var initiative := 5
 
 var movableTiles = []
 var pathfinder := AStar3D.new()
 var defaultWeight = 1.0 #All tiles are 1 so our map has no differing weights
 var is_moving = false
 var path: PackedVector3Array
-
-#TODOs
-#	limit moving to a movable tile
-#	Have controller start selecting an active character
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,7 +26,6 @@ func assignTile(tile: Tile) -> void:
 		await move_along_map(tile.a_star_id)
 	clear_movable_tiles()
 	currentTile = tile
-	highlight_movable_tiles()
 
 func move_along_map(_dest: int) -> void:
 	path = pathfinder.get_point_path(currentTile.a_star_id, _dest)
@@ -39,6 +34,7 @@ func move_along_map(_dest: int) -> void:
 		var tween = create_tween()
 		tween.tween_property(self, "position", path[i], moveSpeed)
 		await tween.finished
+	is_moving = false
 
 func highlight_movable_tiles() -> void: 
 	if(currentTile):

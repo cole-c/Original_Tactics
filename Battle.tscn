@@ -144,19 +144,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -2.5)
 
 [node name="Game_Controller" parent="." instance=ExtResource("5_pjn1s")]
 
-[node name="Character" parent="." instance=ExtResource("3_hdck2")]
+[node name="Character" parent="." node_paths=PackedStringArray("currentTile") instance=ExtResource("3_hdck2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49048, 1.29017, 0.503081)
+currentTile = NodePath("../Map/Tiles/Tile13")
 
-[node name="Character2" type="Node3D" parent="." groups=["Character"]]
+[node name="Character2" type="Node3D" parent="." node_paths=PackedStringArray("currentTile") groups=["Character"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45832, 0.305661, 0.582713)
 script = ExtResource("6_yflgj")
+currentTile = NodePath("../Map/Tiles/Tile21")
+initiative = 6
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="Character2"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
 mesh = SubResource("CapsuleMesh_hc1vf")
 material = SubResource("StandardMaterial3D_lrdw4")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="Character2" groups=["Character"]]
+[node name="RigidBody3D" type="RigidBody3D" parent="Character2"]
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
